@@ -1,0 +1,92 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Hospital & Appointment Management System</title>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 20px; }
+      .section { display: none; margin-top: 20px; }
+      input, button { margin: 5px; padding: 5px; }
+      nav button { margin-right: 10px; }
+      ul { padding-left: 20px; }
+    </style>
+  </head>
+  <body>
+
+    <h1>Hospital & Appointment Management System</h1>
+    <nav>
+      <button onclick="showSection('hospitalSection')">Hospital</button>
+      <button onclick="showSection('doctorSection')">Doctor</button>
+      <button onclick="showSection('patientSection')">Patient</button>
+      <button onclick="showSection('appointmentSection')">Appointment</button>
+    </nav>
+
+    <!-- Hospital Section -->
+    <div id="hospitalSection" class="section">
+      <h2>Register Hospital</h2>
+      <form id="hospitalForm">
+        <input type="text" id="hospitalName" placeholder="Hospital Name" required />
+        <input type="text" id="hospitalLocation" placeholder="Location" required />
+        <button type="submit">Add Hospital</button>
+      </form>
+      <h3>All Hospitals</h3>
+      <ul id="hospitalList"></ul>
+    </div>
+
+    <!-- Doctor Section -->
+    <div id="doctorSection" class="section">
+      <h2>Doctor Registration</h2>
+      <form id="doctorForm">
+        <input type="text" id="doctorName" placeholder="Doctor Name" required />
+        <input type="text" id="specialization" placeholder="Specialization" required />
+        <input type="number" id="doctorHospitalId" placeholder="Hospital ID" required />
+        <button type="submit">Add Doctor</button>
+      </form>
+      <h3>All Doctors</h3>
+      <ul id="doctorList"></ul>
+    </div>
+
+    <!-- Patient Section -->
+    <div id="patientSection" class="section">
+      <h2>Patient Registration</h2>
+     <form id="patientForm">
+  <input type="text" id="patientName" placeholder="Patient Name" required />
+  <input type="number" id="patientAge" placeholder="Age" required />
+  <input type="text" id="patientGender" placeholder="Gender" required />
+  <input type="number" id="doctorId" placeholder="Doctor ID" required />
+  <button type="submit">Add Patient</button>
+</form>
+      <h3>All Patients</h3>
+      <ul id="patientList"></ul>
+    </div>
+
+    <!-- Appointment Section -->
+    <div id="appointmentSection" class="section">
+      <h2>Appointment Booking</h2>
+      <form id="appointmentForm">
+        <input type="number" id="appointmentDoctorId" placeholder="Doctor ID" required />
+        <input type="number" id="appointmentPatientId" placeholder="Patient ID" required />
+        <input type="datetime-local" id="appointmentDate" required />
+        <button type="submit">Book Appointment</button>
+      </form>
+      <h3>All Appointments</h3>
+      <ul id="appointmentList"></ul>
+    </div>
+
+    <script>
+      function showSection(id) {
+        document.querySelectorAll('.section').forEach(sec => sec.style.display = 'none');
+        document.getElementById(id).style.display = 'block';
+      }
+      showSection('hospitalSection'); // default section
+    </script>
+
+    <!-- Include Separate JS Files -->
+    <script src="js/hospital.js" type="module"></script>
+    <script src="js/doctor.js" type="module"></script>
+    <script src="js/patient.js" type="module"></script>
+    <script src="js/appointment.js" type="module"></script>
+
+  </body>
+  </html>
